@@ -1,24 +1,76 @@
-const express = require("express");
-const router = express.Router();
-console.log("test commit");
-router.get("/", async (req, res, next) => {
-  res.json({ message: "template message" });
-});
+const express = require('express')
+const db = require('../../model/db')
+const router = express.Router()
+const Contacts = require('../../model/index')
 
-router.get("/:contactId", async (req, res, next) => {
-  res.json({ message: "template message" });
-});
+// console.log("test commit!");
 
-router.post("/", async (req, res, next) => {
-  res.json({ message: "template message" });
-});
+router.get('/', async (req, res, next) => {
+    try {
+        const contacts = await Contacts.listContacts()
+        return res.json({ status: 'success', code: 200, data: { contacts } })
+    } catch (error) {
+        next(error)
+    }
+})
 
-router.delete("/:contactId", async (req, res, next) => {
-  res.json({ message: "template message" });
-});
+router.get('/:id', async (req, res, next) => {
+    try {
+        const contact = await Contacts.getContactById(req.params.id)
+        if (contact) {
+            return res.json({ status: 'success', code: 200, data: { contact } })
+        } else {
+            return res
+                .status(404)
+                .json({ status: 'error', code: 404, data: 'not found' })
+        }
+    } catch (error) {
+        next(error)
+    }
+})
 
-router.patch("/:contactId", async (req, res, next) => {
-  res.json({ message: "template message" });
-});
+router.post('/', async (req, res, next) => {
+    try {
+        const contact = await Contacts.addContact(req.body)
+        return res
+            .status(201)
+            .json({ status: 'success', code: 201, data: { contact } })
+    } catch (error) {
+        next(error)
+    }
+})
 
-module.exports = router;
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const contact = await Contacts.removeContact(req.params.id)
+        if (contact) {
+            return res.json({ status: 'success', code: 200, data: { contact } })
+        } else {
+            return res
+                .status(404)
+                .json({ status: 'error', code: 404, data: 'not found' })
+        }
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.put('/:id', async (req, res, next) => {
+    try {
+        const contact = await Contacts.updateContact(req.params.id, req.body)
+        if (contact) {
+            return res.json({ status: 'success', code: 200, data: { contact } })
+        } else {
+            return res
+                .status(404)
+                .json({ status: 'error', code: 404, data: 'not found' })
+        }
+    } catch (error) {
+        next(error)
+    }
+})
+
+module.exports = router
+
+// const contacts = Contacts.listContacts()
+// console.log(contacts)
