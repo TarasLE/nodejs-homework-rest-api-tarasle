@@ -3,8 +3,10 @@ const { promises: fsPromise } = fs
 const path = require('path')
 const db = require('./db')
 const { v4: uuidv4 } = require('uuid')
-const contactsPath = path.join(__dirname, './', 'contacts.json')
+// const contactsPath = path.join(__dirname, 'model', 'contacts.json')
+const contacts = require('./contacts.json')
 
+console.log(JSON.parse(contacts))
 const listContacts = async () => {
     // console.log(db.get('contacts'))
     return db.get('contacts').value()
