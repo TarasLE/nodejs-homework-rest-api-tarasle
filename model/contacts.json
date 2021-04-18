@@ -1,161 +1,80 @@
-{
-  "contacts": [
+[
     {
-      "id": "203e7e1a-45df-44fa-9cbf-9b14c7bf6778",
-      "name": "Taras Lyuznyak",
-      "email": "taras_le@ukr.net",
-      "number": "0967744098"
+        "id": 6,
+        "name": "Abbot Franks",
+        "email": "scelerisque@magnis.org",
+        "phone": "(186) 568-3720"
     },
     {
-      "id": "4a8ae4eb-3057-466e-8c7c-d5400591c0a8",
-      "name": "Victor Ptah",
-      "email": "victor@ukr.net",
-      "number": "0961544077"
+        "id": 7,
+        "name": "TARAS1",
+        "email": "pharetra.ut@dictum.co.uk",
+        "phone": "(715) 598-5792"
     },
     {
-      "id": "3f21d036-8853-4e61-a4af-d9117fb4a8a9",
-      "name": "Juliana",
-      "email": "julia@ukr.net",
-      "number": "0679595959"
+        "id": 8,
+        "name": "Simon Morton",
+        "email": "dui.Fusce.diam@Donec.com",
+        "phone": "(233) 738-2360"
     },
     {
-      "id": "f794ceab-3275-4d40-bce4-482f9f8e7597",
-      "name": "Kate",
-      "email": "kate@ukr.net",
-      "number": "0689654126"
+        "id": 9,
+        "name": "Thomas Lucas",
+        "email": "nec@Nulla.com",
+        "phone": "(704) 398-7993"
     },
     {
-      "id": "c3306f52-05da-464b-bac0-587825d8bb1d",
-      "name": 12,
-      "email": "kate@ukr.net",
-      "number": "0689654126"
+        "id": "dd3a9db7-dca3-4d5c-ace9-8504a9ff68f0",
+        "name": "Tom",
+        "number": "0678816491",
+        "email": "tom@mail.com"
     },
     {
-      "id": "da8791f0-c885-48e6-a3c1-c819726367bf",
-      "name": 12,
-      "email": "kate@ukr.net",
-      "number": "13"
+        "id": "761763f3-64d1-40d5-a4b9-c0506106a252",
+        "name": "Victoria",
+        "number": "0636598435",
+        "email": "victoia@mail.com"
     },
     {
-      "id": "d39068e4-b7b1-4035-ba6a-9dfaf02fdf83",
-      "name": 12,
-      "email": "kate@ukr.io",
-      "number": "13"
+        "id": "f78818f8-37fd-4c66-8a43-b630ff05571a",
+        "name": "taras",
+        "number": "0636532498",
+        "email": "taras@mail.com"
     },
     {
-      "id": "304679c6-8d64-412f-b9c5-0e88117c47a6"
+        "id": "2581edd8-4200-49d1-9f9e-d772ce4a3206",
+        "name": "taras1",
+        "number": "0636532457",
+        "email": "taras1@mail.com"
     },
     {
-      "id": "21adb80a-3150-4ad8-b379-bfbcc6af3595",
-      "name": "testName"
+        "id": "89a3d488-6ba6-44eb-902b-8dade64c911f",
+        "name": "taras2",
+        "number": "0636532458",
+        "email": "taras2@mail.com"
     },
     {
-      "id": "831ab0ad-a3a0-4b77-b26c-8737858a4653"
+        "id": "624d5b94-05af-40a2-a7a5-531fe4aab924",
+        "name": "taras4",
+        "number": "0636532458",
+        "email": "taras4@mail.com"
     },
     {
-      "id": "5662f64c-3c47-4482-88c9-239ca4732c15",
-      "name": "John"
+        "id": "60a3503c-5324-4075-9fff-f802bacb9426",
+        "name": "taras6",
+        "number": "0636532458",
+        "email": "taras6@mail.com"
     },
     {
-      "id": "fa6c1655-cd26-4c49-b108-71aaae2e95c3"
+        "id": "1a8237f0-0bf0-41d8-8787-23f658f0df51",
+        "name": "taras7",
+        "number": "0636532458",
+        "email": "taras7@mail.com"
     },
     {
-      "id": "660a28eb-1b5d-474f-84f1-712dd6f41a9f"
-    },
-    {
-      "id": "7bc609fe-1ce9-47ed-889d-e4f895ca0612"
-    },
-    {
-      "id": "18347216-95a3-4f9f-aff8-81c1b09352f4"
-    },
-    {
-      "id": "a5682f91-3dbd-4ff0-8e67-023a2462f379"
-    },
-    {
-      "id": "9c322085-377f-4d40-898f-2a37dace2801"
-    },
-    {
-      "id": "41d7ca23-fa9e-4750-a77b-2cbb7636e6f7"
-    },
-    {
-      "id": "5342a6d9-cd11-4ba7-9aad-f119cb5fdab0",
-      "name": 56
-    },
-    {
-      "id": "1762f510-71f9-4e7d-883b-5d26490f7f00",
-      "name": "64798"
-    },
-    {
-      "id": "c76efdd0-7a78-4d06-8edb-b713767de3c4",
-      "name": "64798"
-    },
-    {
-      "id": "cb31cd44-7f43-401b-af48-f637c30791ee",
-      "name": "test3",
-      "email": "test3@mail.com"
-    },
-    {
-      "id": "66b6b64e-328b-4b03-8a26-c52832302b76"
-    },
-    {
-      "id": "1f834115-60de-443a-84e8-8103fbd064eb"
-    },
-    {
-      "id": "3de9bf45-5954-4dd6-a002-1deb80ea5477"
-    },
-    {
-      "id": "bcc63f25-3686-4efb-81c6-4f019992272f"
-    },
-    {
-      "id": "e21ae6fc-1ff2-454a-a898-40d7723f8196"
-    },
-    {
-      "id": "78a7bcb6-fa94-4509-8c08-3b0d9b5d2f3e"
-    },
-    {
-      "id": "a07b1cc8-11a3-4c93-bcf4-65c473b10ae2"
-    },
-    {
-      "id": "0f26bef9-318d-44b0-85a8-287bd12bc1e1"
-    },
-    {
-      "id": "c6e04603-0341-4637-8066-15e0100a91b4"
-    },
-    {
-      "id": "2f39b89b-0082-4c09-b80f-aa0b17d6a66d"
-    },
-    {
-      "id": "38f5e2a7-4144-41ea-8e14-f461c7ab5d76"
-    },
-    {
-      "id": "50d61d81-d9a8-4351-a0f2-3495a6c5eb89"
-    },
-    {
-      "id": "26195c32-e09f-4c3e-9e9f-e0d70c361791",
-      "name": "test4"
-    },
-    {
-      "id": "0f823092-a142-4fb9-bfd3-bd6ba8ccacf2",
-      "name": "test4"
-    },
-    {
-      "id": "55e061a0-10f0-4b15-93f7-b3d3f44c5619",
-      "name": "test4"
-    },
-    {
-      "id": "9e10e0a5-6c94-46d7-a705-605abc6a54d6"
-    },
-    {
-      "id": "16061459-da6a-4972-aaac-9f31641c3526"
-    },
-    {
-      "id": "b640e222-0ec4-400a-9060-4f7eaf5c51a1"
-    },
-    {
-      "id": "09ad86fb-5c01-4144-81a1-7d4c6e8a5303"
-    },
-    {
-      "id": "adbbe2c4-4b05-4873-9883-f958c94d377d"
+        "id": "6fc0f20f-09d7-486a-b57b-088a7eb3e7ac",
+        "name": "taras8",
+        "number": "0636532458",
+        "email": "taras8@mail.com"
     }
-  ]
-}
+]
