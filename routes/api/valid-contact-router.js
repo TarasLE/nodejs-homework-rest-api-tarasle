@@ -3,7 +3,10 @@ const Joi = require('joi')
 const schemaCreateContact = Joi.object({
     name: Joi.string().min(3).max(30).required(),
 
-    number: Joi.number().integer().required(),
+    number: Joi.string()
+        .length(10)
+        .pattern(/^[0-9]+$/)
+        .required(),
 
     email: Joi.string()
         .email({

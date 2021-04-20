@@ -4,13 +4,16 @@ const path = require('path')
 const db = require('./db')
 const { v4: uuidv4 } = require('uuid')
 const Contacts = path.join(__dirname, './', 'contacts.json')
-const List = require('./contacts.json')
 const { json } = require('express')
+const { loadavg } = require('os')
+
 const listContacts = async () => {
     /*РЕАЛИЗАЦИЯ ЧЕРЕЗ LOWDB*/
     // return db.get('contacts').value()
 
-    return List
+    const list = await fsPromise.readFile(Contacts)
+    const parsedContacts = JSON.parse(list)
+    return parsedContacts
 }
 
 const getContactById = async (id) => {
