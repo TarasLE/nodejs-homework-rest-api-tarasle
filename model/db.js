@@ -1,9 +1,9 @@
-const { MongoClient } = require('mongodb')
+const mongoose = require('mongoose')
 require('dotenv').config()
 
 const uriDb = process.env.URI_DB
 
-const db = MongoClient.connect(
+const db = mongoose.connect(
     uriDb,
     {
         useNewUrlParser: true,
@@ -13,11 +13,19 @@ const db = MongoClient.connect(
     console.log('Database connection successful')
 )
 
+mongoose.connection.on('error', (err) => {
+    console.log(`Mongoose error: ${err.message}`)
+})
+
+mongoose.connection.on('disconnected', () => {
+    console.log(`Mongoose disconnected`)
+})
+
 process.on('SIGINT', async () => {
-    const client = await db
-    client.close()
-    console.log('Connection to DB disconected and app terminated')
-    process.exit(1)
+    mongoose.connection.close(() => {
+        console.log('Connection to DB disconected and app terminated')
+        process.exit(1)
+    })
 })
 
 module.exports = db
