@@ -92,7 +92,7 @@ router.put(
 )
 
 router.patch(
-    '/:id',
+    '/:id/favorite',
     validationObjectId,
     validationUpdateStatusContact,
     async (req, res, next) => {
