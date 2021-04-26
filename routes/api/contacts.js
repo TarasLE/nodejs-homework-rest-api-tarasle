@@ -4,7 +4,11 @@ const Contacts = require('../../model/index')
 const {
     validationCreateContact,
     validationUpdateContact,
+    validationUpdateStatusContact,
+    validationObjectId,
 } = require('./valid-contact-router')
+
+const handleError = require('../../helper/handle-error')
 
 router.get('/', async (req, res, next) => {
     try {
@@ -19,7 +23,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', validationObjectId, async (req, res, next) => {
     try {
         const contact = await Contacts.getContactById(req.params.id)
         if (contact) {
@@ -34,18 +38,18 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-router.post('/', validationCreateContact, async (req, res, next) => {
-    try {
+router.post(
+    '/',
+    validationCreateContact,
+    handleError(async (req, res, next) => {
         const contact = await Contacts.addContact(req.body)
         return res
             .status(201)
             .json({ status: 'success', code: 201, data: { contact } })
-    } catch (error) {
-        next(error)
-    }
-})
+    })
+)
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', validationObjectId, async (req, res, next) => {
     try {
         const contact = await Contacts.removeContact(req.params.id)
         if (contact) {
@@ -60,19 +64,62 @@ router.delete('/:id', async (req, res, next) => {
     }
 })
 
-router.put('/:id', validationUpdateContact, async (req, res, next) => {
-    try {
-        const contact = await Contacts.updateContact(req.params.id, req.body)
-        if (contact) {
-            return res.json({ status: 'success', code: 200, data: { contact } })
-        } else {
-            return res
-                .status(404)
-                .json({ status: 'error', code: 404, data: 'not found' })
+router.put(
+    '/:id',
+    validationObjectId,
+    validationUpdateContact,
+    async (req, res, next) => {
+        try {
+            const contact = await Contacts.updateContact(
+                req.params.id,
+                req.body
+            )
+            if (contact) {
+                return res.json({
+                    status: 'success',
+                    code: 200,
+                    data: { contact },
+                })
+            } else {
+                return res
+                    .status(404)
+                    .json({ status: 'error', code: 404, data: 'not found' })
+            }
+        } catch (error) {
+            next(error)
         }
-    } catch (error) {
-        next(error)
     }
-})
+)
+
+router.patch(
+    '/:id/favorite',
+    validationObjectId,
+    validationUpdateStatusContact,
+    async (req, res, next) => {
+        try {
+            const contact = await Contacts.updateContact(
+                req.params.id,
+                req.body
+            )
+            if (contact) {
+                return res.json({
+                    status: 'success',
+                    code: 200,
+                    data: {
+                        contact,
+                    },
+                })
+            } else {
+                return res.status(404).json({
+                    status: 'error',
+                    code: 404,
+                    data: 'Not Found',
+                })
+            }
+        } catch (e) {
+            next(e)
+        }
+    }
+)
 
 module.exports = router
