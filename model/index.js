@@ -32,7 +32,7 @@ const updateContact = async (id, body) => {
 const updateStatusContact = async (id, body) => {
     const result = await Contacts.findByIdAndUpdate(
         { _id: id },
-        { $set: body.favorite },
+        { favorite: body.favorite },
         { new: true }
     )
     return result
