@@ -29,10 +29,21 @@ const updateContact = async (id, body) => {
     return result
 }
 
+const updateStatusContact = async (id, body) => {
+    // console.log('FROM UPDATE FUNCTION')
+    const result = await Contacts.findByIdAndUpdate(
+        { _id: id },
+        { $set: body.favorite },
+        { new: true }
+    )
+    return result
+}
+
 module.exports = {
     listContacts,
     getContactById,
     removeContact,
     addContact,
     updateContact,
+    updateStatusContact,
 }

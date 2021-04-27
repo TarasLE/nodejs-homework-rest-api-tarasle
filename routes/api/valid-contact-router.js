@@ -29,7 +29,7 @@ const schemaUpdateContact = Joi.object({
         })
         .optional(),
     favorite: Joi.boolean().optional(),
-}).or('name', 'number', 'email')
+}).or('name', 'number', 'email', 'favorite')
 
 const schemaUpdateStatusContact = Joi.object({
     favorite: Joi.boolean().required(),
@@ -42,7 +42,7 @@ const validator = async (schema, obj, next) => {
         return next()
     } catch (error) {
         console.log(error)
-        next({ status: 400, message: error.message })
+        next({ status: 400, message: error.message.replace(/"/g, "'") })
     }
 }
 
@@ -54,7 +54,7 @@ module.exports = {
         return await validator(schemaUpdateContact, req.body, next)
     },
     validationUpdateStatusContact: async (req, res, next) => {
-        return await validate(schemaUpdateStatusContact, req.body, next)
+        return await validator(schemaUpdateStatusContact, req.body, next)
     },
     validationObjectId: async (req, res, next) => {
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {

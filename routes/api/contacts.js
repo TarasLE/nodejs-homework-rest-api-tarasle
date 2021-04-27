@@ -97,7 +97,7 @@ router.patch(
     validationUpdateStatusContact,
     async (req, res, next) => {
         try {
-            const contact = await Contacts.updateContact(
+            const contact = await Contacts.updateStatusContact(
                 req.params.id,
                 req.body
             )
@@ -116,8 +116,8 @@ router.patch(
                     data: 'Not Found',
                 })
             }
-        } catch (e) {
-            next(e)
+        } catch (error) {
+            next(error)
         }
     }
 )
