@@ -28,8 +28,7 @@ const schemaUpdateContact = Joi.object({
             tlds: { allow: ['com', 'net'] },
         })
         .optional(),
-    favorite: Joi.boolean().optional(),
-}).or('name', 'number', 'email', 'favorite')
+}).or('name', 'number', 'email')
 
 const schemaUpdateStatusContact = Joi.object({
     favorite: Joi.boolean().required(),
