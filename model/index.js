@@ -30,7 +30,6 @@ const updateContact = async (id, body) => {
 }
 
 const updateStatusContact = async (id, body) => {
-    // console.log('FROM UPDATE FUNCTION')
     const result = await Contacts.findByIdAndUpdate(
         { _id: id },
         { $set: body.favorite },
