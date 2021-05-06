@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema, model, SchemaTypes } = mongoose
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 const contactSchema = new Schema(
     {
@@ -47,6 +48,7 @@ contactSchema.path('favorite').validate((value) => {
     return re.test(Boolean(value))
 })
 
+contactSchema.plugin(mongoosePaginate)
 const Contact = model('contact', contactSchema)
 
 module.exports = Contact

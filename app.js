@@ -1,7 +1,7 @@
 const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
-
+const boolParser = require('express-query-boolean')
 const contactsRouter = require('./routes/contacts')
 const userRouter = require('./routes/users')
 
@@ -19,6 +19,7 @@ app.use(
     })
 )
 app.use(express.json())
+app.use(boolParser())
 
 app.use('/api/users', userRouter)
 app.use('/api/contacts', contactsRouter)

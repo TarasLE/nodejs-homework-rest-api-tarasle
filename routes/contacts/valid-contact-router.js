@@ -15,7 +15,18 @@ const schemaCreateContact = Joi.object({
             tlds: { allow: ['com', 'net'] },
         })
         .required(),
+
+    favorite: Joi.boolean().optional(),
 })
+
+const schemaQueryContact = Joi.object({
+    sortBy: Joi.string().valid('name', 'number', 'email', 'id').optional(),
+    sortByDesc: Joi.string().valid('name', 'number', 'email', 'id').optional(),
+    filter: Joi.string().optional(),
+    limit: Joi.number().integer().min(0).max(50).optional(),
+    offset: Joi.number().integer().min(0).optional(),
+    favorite: Joi.boolean().optional(),
+}).without('sortBy', 'sortByDesc')
 
 const schemaUpdateContact = Joi.object({
     name: Joi.string().min(3).max(30).required().optional(),
@@ -60,5 +71,8 @@ module.exports = {
             return next({ status: 400, message: 'Invalid Object Id' })
         }
         next()
+    },
+    validationQueryContact: async (req, res, next) => {
+        return await validator(schemaQueryContact, req.query, next)
     },
 }

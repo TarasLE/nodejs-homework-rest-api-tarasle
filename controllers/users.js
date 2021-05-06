@@ -17,12 +17,11 @@ const reg = async (req, res, next) => {
     try {
         const newUser = await Users.create(req.body)
         return res.status(HttpCode.CREATED).json({
-            status: 'success',
+            status: 'created',
             code: HttpCode.CREATED,
-            data: {
-                id: newUser.id,
-                email: newUser,
-                gender: newUser.gender,
+            user: {
+                email: newUser.email,
+                subscription: newUser.subscription,
             },
         })
     } catch (e) {
