@@ -6,36 +6,6 @@ const SALT_FACTOR = 6
 
 const userSchema = new Schema(
     {
-        // name: {
-        //     type: String,
-        //     minlength: 2,
-        //     default: 'Guest',
-        // },
-        // gender: {
-        //     type: String,
-        //     enum: {
-        //         values: [Gender.MALE, Gender.FEMALE, Gender.NONE],
-        //         message: "it's not allowed",
-        //     },
-        //     default: Gender.NONE,
-        // },
-        // email: {
-        //     type: String,
-        //     required: true,
-        //     unique: true,
-        //     validate(value) {
-        //         const re = /\S+@\S+\.\S+/
-        //         return re.test(String(value).toLowerCase())
-        //     },
-        // },
-        // password: {
-        //     type: String,
-        //     required: true,
-        // },
-        // token: {
-        //     type: String,
-        //     default: null,
-        // },
         password: {
             type: String,
             required: [true, 'Password is required'],

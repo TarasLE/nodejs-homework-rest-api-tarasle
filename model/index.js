@@ -27,14 +27,6 @@ const listContacts = async (userId, query) => {
         },
     })
     return results
-    // const results = await Contacts.find({ owner: userId }).populate({
-    //     path: 'owner',
-    //     select: ' email id',
-    // })
-    // return results
-
-    // const results = await Contacts.find({ owner: userId })
-    // return results
 }
 
 const getContactById = async (userId, id) => {
