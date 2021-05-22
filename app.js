@@ -1,6 +1,7 @@
 const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
+const helmet = require('helmet')
 const boolParser = require('express-query-boolean')
 const contactsRouter = require('./routes/contacts')
 const userRouter = require('./routes/users')
@@ -9,7 +10,9 @@ const app = express()
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
 
+app.use(helmet())
 app.use(logger(formatsLogger))
+app.use(express.static('public'))
 app.use(
     cors({
         origin: '*',
