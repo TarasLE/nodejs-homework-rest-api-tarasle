@@ -18,23 +18,21 @@ class EmailService {
                 break
         }
     }
-
     #createTemplateVerifyEmail(verifyToken, name) {
         const mailGenerator = new this.#GenerateTemplate({
             theme: 'cerberus',
             product: {
-                name: 'System users',
+                name: 'System cats',
                 link: this.link,
             },
         })
-
         const email = {
             body: {
                 name,
-                intro: "Welcome to System users! We're very excited to have you on board.",
+                intro: "Welcome to System cats! We're very excited to have you on board.",
                 action: {
                     instructions:
-                        'To get started with Mailgen, please click here:',
+                        'To get started with System cats, please click here:',
                     button: {
                         color: '#22BC66', // Optional action button color
                         text: 'Confirm your account',
@@ -45,14 +43,16 @@ class EmailService {
         }
 
         const emailBody = mailGenerator.generate(email)
+        // console.log(emailBody)
         return emailBody
     }
+
     async sendVerifyEmail(verifyToken, email, name) {
         this.#sender.setApiKey(process.env.SENDGRID_API_KEY)
         const msg = {
             to: email, // Change to your recipient
             from: 'lyuznyaktaras@gmail.com', // Change to your verified sender
-            subject: 'Verify Email',
+            subject: 'Verify email',
             html: this.#createTemplateVerifyEmail(verifyToken, name),
         }
 

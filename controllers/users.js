@@ -21,7 +21,8 @@ const reg = async (req, res, next) => {
 
     try {
         const newUser = await Users.create(req.body)
-        const { id, name, email, avatar, verifyTokenEmail } = newUser
+        const { id, name, email, avatar, subscription, verifyTokenEmail } =
+            newUser
         try {
             const emailService = new EmailService(process.env.NODE_ENV)
             await emailService.sendVerifyEmail(verifyTokenEmail, email, name)
@@ -110,6 +111,7 @@ const verify = async (req, res, next) => {
     try {
         const user = await Users.findByVerifyTokenEmail(req.params.token)
         if (user) {
+            await Users.updateVerifyToken(user.id, true, null)
             return res.status(HttpCode.OK).json({
                 status: 'success',
                 code: HttpCode.OK,
@@ -119,14 +121,13 @@ const verify = async (req, res, next) => {
         return res.status(HttpCode.BAD_REQUEST).json({
             status: 'error',
             code: HttpCode.BAD_REQUEST,
-            data: {
-                message: 'Invalid token. Contactto administration',
-            },
+            message: 'Invalid token. Contact to administration',
         })
     } catch (error) {
         next(error)
     }
 }
+
 const repeatEmailVerify = async (req, res, next) => {
     try {
         const user = await Users.findByEmail(req.body.email)
@@ -143,9 +144,7 @@ const repeatEmailVerify = async (req, res, next) => {
         return res.status(HttpCode.NOT_FOUND).json({
             status: 'error',
             code: HttpCode.NOT_FOUND,
-            data: {
-                message: 'User not found',
-            },
+            message: 'User not found',
         })
     } catch (error) {
         next(error)
