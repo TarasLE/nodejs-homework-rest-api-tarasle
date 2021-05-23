@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 const ctrl = require('../../controllers/users')
 const guard = require('../../helper/guard')
-const uploadAvatar = require('../../helper/uploadAvatar')
 const rateLimit = require('express-rate-limit')
+const uploadAvatar = require('../../helper/uploadAvatar')
 
 const limiter = rateLimit({
     windows: 60 * 60 * 1000,
@@ -28,5 +28,8 @@ router.patch(
     uploadAvatar.single('avatar'),
     ctrl.updateAvatar
 )
+
+router.get('/verify/:token', ctrl.verify)
+router.post('/verify', ctrl.repeatEmailVerify)
 
 module.exports = router
